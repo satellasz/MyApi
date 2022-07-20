@@ -3,10 +3,11 @@ using MyApi.Domain.Services;
 
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using MyApi.Infrastructure.Data.Context;
+using Microsoft.AspNetCore.Authorization;
 
 namespace MyApi.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("api/[controller]")]
     public class PostController : ControllerBase

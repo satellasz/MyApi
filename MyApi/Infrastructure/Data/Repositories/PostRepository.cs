@@ -1,5 +1,5 @@
 ﻿using MyApi.Domain.Models;
-using MyApi.Infrastructure.Data.Context;
+using MyApi.Infrastructure.Data.Contexts;
 
 using Microsoft.EntityFrameworkCore;
 
@@ -36,7 +36,7 @@ namespace MyApi.Infrastructure.Data.Repositories
             {
                 await _context.SaveChangesAsync();
             }
-            catch (DbUpdateConcurrencyException dbException)
+            catch (DbUpdateException dbException)
             {
                 throw dbException;
             }
@@ -56,7 +56,7 @@ namespace MyApi.Infrastructure.Data.Repositories
             {
                 await _context.SaveChangesAsync();
             }
-            catch (DbUpdateConcurrencyException dbException)
+            catch (DbUpdateException dbException)
             {
                 throw dbException;
             }
@@ -78,7 +78,7 @@ namespace MyApi.Infrastructure.Data.Repositories
             {
                 await _context.SaveChangesAsync();
             }
-            catch (DbUpdateConcurrencyException dbException)
+            catch (DbUpdateException dbException)
             {
                 throw dbException;
             }

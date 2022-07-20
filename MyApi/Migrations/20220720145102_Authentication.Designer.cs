@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MyApi.Infrastructure.Data.Contexts;
 
@@ -11,9 +12,10 @@ using MyApi.Infrastructure.Data.Contexts;
 namespace MyApi.Migrations
 {
     [DbContext(typeof(DbPostContext))]
-    partial class DbPostContextModelSnapshot : ModelSnapshot
+    [Migration("20220720145102_Authentication")]
+    partial class Authentication
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
