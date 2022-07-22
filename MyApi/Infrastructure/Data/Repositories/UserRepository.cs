@@ -5,32 +5,32 @@ using Microsoft.EntityFrameworkCore;
 
 namespace MyApi.Infrastructure.Data.Repositories
 {
-    public class PostRepository
+    public class UserRepository
     {
         private readonly DbPostContext _context;
 
-        public PostRepository(DbPostContext context)
+        public UserRepository(DbPostContext context)
         {
             _context = context;
         }
 
-        public async Task<List<Post>> GetAll()
+        public async Task<List<ApplicationUser>> GetAll()
         {
-            List<Post> posts = await _context.Posts.ToListAsync();
+            List<ApplicationUser> users = await _context.User.ToListAsync();
 
-            return posts;
+            return users;
         }
 
-        public async Task<Post> GetById(int id)
+        public async Task<ApplicationUser> GetById(string id)
         {
-            Post post = await _context.Posts.FindAsync(id);
+            ApplicationUser user = await _context.User.FindAsync(id);
 
-            return post;
+            return user;
         }
 
-        public async Task<Post> Create(Post post)
-        {          
-            _context.Posts.Add(post);
+        public async Task<ApplicationUser> Create(ApplicationUser user)
+        {
+            _context.User.Add(user);
 
             try
             {
@@ -45,12 +45,12 @@ namespace MyApi.Infrastructure.Data.Repositories
                 throw;
             }
 
-            return post;
+            return user;
         }
-        
-        public async Task<Post> Update(Post post)
+
+        public async Task<ApplicationUser> Update(ApplicationUser user)
         {
-            _context.Entry(post).State = EntityState.Modified;
+            _context.Entry(user).State = EntityState.Modified;
 
             try
             {
@@ -63,16 +63,16 @@ namespace MyApi.Infrastructure.Data.Repositories
             catch (Exception)
             {
                 throw;
-            }      
+            }
 
-            return post;
+            return user;
         }
 
-        public async Task Delete(int id)
+        public async Task Delete(string id)
         {
-            Post post = GetById(id).Result;
+            ApplicationUser user = GetById(id).Result;
 
-            _context.Posts.Remove(post);
+            _context.User.Remove(user);
 
             try
             {

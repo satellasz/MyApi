@@ -34,6 +34,9 @@ namespace MyApi
             builder.Services.AddScoped<PostService>();
             builder.Services.AddScoped<PostRepository>();
 
+            builder.Services.AddScoped<AuthService>();
+            builder.Services.AddScoped<UserRepository>();
+
             builder.Services.AddIdentity<ApplicationUser, ApplicationRole>().AddEntityFrameworkStores<DbPostContext>().AddDefaultTokenProviders();
 
             builder.Services.AddAuthentication(options =>
